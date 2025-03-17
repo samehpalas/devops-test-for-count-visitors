@@ -1,5 +1,15 @@
+README
+-----
+for ci MANUALLY
 
+aws configure
+aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 061051254134.dkr.ecr.ap-south-1.amazonaws.com
 
+docker tag samehpalas/visitor_count:2.2 061051254134.dkr.ecr.ap-south-1.amazonaws.com/visitor_count-app1:latest
+     
+docker push 061051254134.dkr.ecr.ap-south-1.amazonaws.com/visitor_count-app1:latest
+
+for ci on git hub : /marketplace to use the needed workflows
 
 # Ignore node_modules and dependencies
 node_modules/
