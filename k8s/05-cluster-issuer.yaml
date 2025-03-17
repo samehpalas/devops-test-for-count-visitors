@@ -1,0 +1,16 @@
+#after installing cert-manager by helm;config cluster issuer for lets encrypt challenges & config certificate to request certificate (valid 90D)
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer #cluster wide for all namespaces
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    email: samehpalas33@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: http-01-production-cluster-issuer
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: nginx

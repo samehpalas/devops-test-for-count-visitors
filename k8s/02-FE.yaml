@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: app1
+  labels:
+    app: app-dep1
+  name: app-dep1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-dep1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-dep1
+    spec:
+      containers:
+      - image: 061051254134.dkr.ecr.ap-south-1.amazonaws.com/visitor_count-app1:latest
+        name: app-dep1
+        ports:
+        - containerPort: 5000
+        resources: {}
+status: {}

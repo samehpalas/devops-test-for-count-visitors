@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+  namespace: app1
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+
+    #alb.ingress.kubernetes.io/scheme: internet-facing
+    #alb.ingress.kubernetes.io/target-type: ip
+    #alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+spec:
+  ingressClassName: nginx #instead old annotation: kubernetes.io/ingress.class: "nginx"
+  rules:
+  - host: visitor.samehpalas.live
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-svc
+            port:
+             number: 80
+  tls:
+   - hosts:
+      - visitor.samehpalas.live
+     secretName:  visitor-samehpalas-live   # ingress will mount it automatically to ingress controller(pod) so terminate tls there
+ 
