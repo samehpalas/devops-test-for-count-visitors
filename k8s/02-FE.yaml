@@ -19,7 +19,7 @@ spec:
         app: app-dep1
     spec:
       containers:
-      - image: 061051254134.dkr.ecr.ap-south-1.amazonaws.com/visitor_count-app1:latest
+      - image: 061051254134.dkr.ecr.ap-south-1.amazonaws.com/visitor_count-app1:v1
         imagePullPolicy: Always
         name: app-dep1
         ports:
