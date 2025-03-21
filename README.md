@@ -1,3 +1,4 @@
+awl t3dil dev
 terraform apply --auto-approve
 eks config update ..
 kubectl apply -f ./k8s/
