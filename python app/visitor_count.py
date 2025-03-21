@@ -1,3 +1,4 @@
+#ezyk1
 from flask import Flask, jsonify
 import sqlite3
 
@@ -34,6 +35,7 @@ def get_visitor_count():
     return count
 
 @app.route("/")
+
 def index():
     increment_visitor_count()
     return jsonify({"total_visitors": get_visitor_count()})
