@@ -1,3 +1,4 @@
+hi
 // Loadtesting script using k6.io
 
 import http from 'k6/http';
